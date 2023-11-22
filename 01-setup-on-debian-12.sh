@@ -54,8 +54,22 @@ dovecot-mysql dovecot-sieve dovecot-managesieved dovecot-imapd dovecot-pop3d \
 dovecot-sieve dovecot-antispam dovecot-fts-xapian postfix-pcre postfwd  opendkim \
 opendkim-tools xapian-tools recoll libdatetime-format-mail-perl fetchmail imapproxy \
 spamassassin libgssapi-perl razor pyzor libencode-detect-perl libgeoip2-perl \
-libnet-patricia-perl libbsd-resource-perl libencoding-fixlatin-perl \
-libencoding-fixlatin-xs-perl liburi-encode-perl
+libnet-patricia-perl antiword libbsd-resource-perl libencoding-fixlatin-perl \
+libconfig-yaml-perl libnet-ldap-perl libconvert-asn1-perl libbusiness-isbn-perl \
+libencoding-fixlatin-xs-perl liburi-encode-perl \
+libtest-leaktrace-perl libdb5.3-dev nomarch libtest-leaktrace-perl \
+libsort-naturally-perl libfile-which-perl  libfile-homedir-perl \
+libfile-homedir-perl libfile-which-perl libpath-class-perl libany-uri-escape-perl \
+libcpan-changes-perl libcpan-distnameinfo-perl \
+libcpan-meta-check-perl libdata-perl-perl libdata-section-perl \
+libexporter-tiny-perl libfile-pushd-perl libfile-slurp-perl \
+libgetopt-long-descriptive-perl liblist-moreutils-perl libmaxminddb-dev \
+liblist-moreutils-xs-perl liblocal-lib-perl libmodule-build-perl \
+libmodule-cpanfile-perl libmodule-signature-perl libmoox-handlesvia-perl \
+libparse-pmfile-perl libpod-markdown-perl libpod-readme-perl \
+libsoftware-license-perl libstring-shellquote-perl libtype-tiny-perl \
+libtype-tiny-xs-perl liburi-escape-xs-perl \
+libclone-pp-perl libtest-requires-perl libtest-warnings-perl libtest-fatal-perl
 
 
 systemctl restart chrony

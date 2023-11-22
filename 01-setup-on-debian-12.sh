@@ -40,10 +40,46 @@ DEBIAN_FRONTEND=noninteractive
 apt -y install vim chrony openssh-server screen net-tools git mc postfix sendemail  \
 sudo wget curl ethtool iptraf-ng traceroute telnet rsyslog software-properties-common \
 dirmngr parted gdisk apt-transport-https lsb-release ca-certificates iputils-ping \
-debconf-utils pwgen xfsprogs iftop htop multitail net-tools elinks pssh
+debconf-utils pwgen xfsprogs iftop htop multitail net-tools elinks pssh apache2 \
+iptables-persistent build-essential gnupg2 zip rar unrar ftp php rsync unzip \
+libimage-exiftool-perl poppler-utils tnef whois libauthen-pam-perl php-zip \
+libio-pty-perl libnet-ssleay-perl perl-openssl-defaults mariadb-server \
+libapache2-mod-php php-mysql php-cli php-common php-imap php-ldap php-xml tar \
+php-curl php-mbstring php-zip php-apcu php-gd php-imagick imagemagick mcrypt \
+memcached php-memcached php-bcmath dbconfig-common libapache2-mod-php php-intl \
+php-mysql php-intl libdbd-mysql-perl certbot python3-certbot-apache automysqlbackup \
+php-mailparse perl-doc mysqltuner catdoc imagemagick tesseract-ocr tesseract-ocr-eng \
+poppler-utils exiv2 libnet-dns-perl libmailtools-perl php-mail-mime
 
 systemctl restart chrony
 systemctl restart rsyslog
+
+a2enmod actions > /dev/null 2>&1
+a2enmod proxy_fcgi > /dev/null 2>&1
+a2enmod fcgid > /dev/null 2>&1
+a2enmod alias > /dev/null 2>&1
+a2enmod suexec > /dev/null 2>&1
+a2enmod rewrite > /dev/null 2>&1
+a2enmod ssl > /dev/null 2>&1
+a2enmod actions > /dev/null 2>&1
+a2enmod include > /dev/null 2>&1
+a2enmod dav_fs > /dev/null 2>&1
+a2enmod dav > /dev/null 2>&1
+a2enmod auth_digest > /dev/null 2>&1
+a2enmod cgi > /dev/null 2>&1
+a2enmod headers > /dev/null 2>&1
+a2enmod proxy_http > /dev/null 2>&1
+systemctl stop apache2
+## usefull for nginx imap & smtp proxy  --also with php-fpm
+apt-get -y install nginx-full php-fpm php-pear
+systemctl stop php8.2-fpm.service > /dev/null 2>&1
+systemctl disable php8.2-fpm.service > /dev/null 2>&1
+## keep fpm disabled default -- useful for very high load web-server
+systemctl stop php.fpm  > /dev/null 2>&1
+systemctl disable php-fpm > /dev/null 2>&1
+#To enable PHP 8.2 FPM in Apache2 do:
+#a2enmod proxy_fcgi setenvif
+#a2enconf php8.2-fpm
 
 ## centos like bash ..for all inteactive 
 echo "" >> /etc/bash.bashrc
@@ -88,6 +124,43 @@ echo " WantedBy=multi-user.target" >> /etc/systemd/system/rc-local.service
 systemctl enable rc-local
 systemctl start rc-local
 
+# download latest MyslqTunner--useful when perforance tuning needed
+#https://github.com/major/MySQLTuner-perl/blob/master/INTERNALS.md
+
+### changing timezone to Asia Kolkata
+sed -i "s/;date.timezone =/date\.timezone \= \'Asia\/Kolkata\'/" /etc/php/8.2/apache2/php.ini
+sed -i "s/;date.timezone =/date\.timezone \= \'Asia\/Kolkata\'/" /etc/php/8.2/cli/php.ini
+sed -i "s/;date.timezone =/date\.timezone \= \'Asia\/Kolkata\'/" /etc/php/8.2/fpm/php.ini
+##disable error
+sed -i "s/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ERROR/" /etc/php/8.2/cli/php.ini
+sed -i "s/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ERROR/" /etc/php/8.2/fpm/php.ini
+sed -i "s/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ERROR/" /etc/php/8.2/apache2/php.ini
+
+sed -i "s/memory_limit = 128M/memory_limit = 512M/" /etc/php/8.2/apache2/php.ini
+sed -i "s/post_max_size = 100M/post_max_size = 800M/" /etc/php/8.2/apache2/php.ini
+sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 100M/" /etc/php/8.2/apache2/php.ini
+
+
+##disable this program as not needed
+systemctl stop ModemManager 1>/dev/null 2>/dev/null
+systemctl disable ModemManager 1>/dev/null 2>/dev/null
+systemctl stop wpa_supplicant 1>/dev/null 2>/dev/null
+systemctl disable wpa_supplicant 1>/dev/null 2>/dev/null
+
+# use only for heavy load server via Service or use nginx
+systemctl stop imapproxy.service 2>/dev/null
+systemctl disable imapproxy.service 2>/dev/null
+
+sed -i "s/#RateLimitIntervalSec=30s/RateLimitIntervalSec=0/"  /etc/systemd/journald.conf
+sed -i "s/#RateLimitBurst=10000/RateLimitBurst=0/"  /etc/systemd/journald.conf
+systemctl restart systemd-journald
+
+
+sed -i "s/SOCKET\=local\:\$RUNDIR\/opendkim.sock/#SOCKET\=local\:\$RUNDIR\/opendkim.sock/" /etc/default/opendkim
+sed -i "s/#SOCKET\=inet\:12345\@localhost/SOCKET\=inet\:12345\@localhost/" /etc/default/opendkim
+/lib/opendkim/opendkim.service.generate
+systemctl daemon-reload
+
 ## make cpan auto yes for pre-requist modules of perl
 (echo y;echo o conf prerequisites_policy follow;echo o conf commit)|cpan 1>/dev/null
 
@@ -102,8 +175,6 @@ echo "syntax on" >> /etc/skel/.vimrc
 sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/sshd_config
 #sed -i "s/#Port 22/Port 7722/g" /etc/ssh/sshd_config
 systemctl restart ssh
-
-
 
 ##### configure proper timezone
 #dpkg-reconfigure tzdata
@@ -124,6 +195,36 @@ systemctl restart ssh
 #google dns: [2001:4860:4860::8888]
 #cloudflare dns: [2606:4700:4700::1111]
 
+
+/bin/cp -p files/extra-files/etc-config-backup.sh /bin/
+/bin/cp -p files/extra-files/pfHandle /bin/
+
+## safe backup
+files/extra-files/etc-config-backup.sh
+
+apt-get -y install unbound 1>/dev/null 2>/dev/null
+## copy fw default settings
+/bin/cp -pR files/rootdir/* /
+systemctl restart unbound 1>/dev/null 2>/dev/null
+systemctl restart  rsyslog
+systemctl stop nginx
+systemctl restart  apache2
+systemctl restart  cron
+systemctl restart  mariadb
+
+
+
+
+echo `hostname -f` > /etc/mailname
+## adding 89 so that migration from qmailtoaster setup is easier.
+groupadd -g 89 vmail 2>/dev/null
+useradd -g vmail -u 89 -d /home/powermail vmail 2>/dev/null
+mkdir /home/powermail 2>/dev/null
+chown -R vmail:vmail /home/powermail
+
+## if ZFS is used for Storage specailly for Archive Server
+#DEBIAN_FRONTEND=noninteractive apt -y install zfs-dkms zfsutils-linux zfs-zed
+#apt -y install dpkg-dev linux-headers-$(uname -r) linux-image-amd64
 
 hostname -f
 ping `hostname -f` -c 2

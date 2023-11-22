@@ -43,16 +43,26 @@ dirmngr parted gdisk apt-transport-https lsb-release ca-certificates iputils-pin
 debconf-utils pwgen xfsprogs iftop htop multitail net-tools elinks pssh apache2 \
 iptables-persistent build-essential gnupg2 zip rar unrar ftp php rsync unzip \
 libimage-exiftool-perl poppler-utils tnef whois libauthen-pam-perl php-zip \
-libio-pty-perl libnet-ssleay-perl perl-openssl-defaults mariadb-server \
+libio-pty-perl libnet-ssleay-perl lynx lynx-common perl-openssl-defaults mariadb-server \
 libapache2-mod-php php-mysql php-cli php-common php-imap php-ldap php-xml tar \
 php-curl php-mbstring php-zip php-apcu php-gd php-imagick imagemagick mcrypt \
 memcached php-memcached php-bcmath dbconfig-common libapache2-mod-php php-intl \
 php-mysql php-intl libdbd-mysql-perl certbot python3-certbot-apache automysqlbackup \
 php-mailparse perl-doc mysqltuner catdoc imagemagick tesseract-ocr tesseract-ocr-eng \
-poppler-utils exiv2 libnet-dns-perl libmailtools-perl php-mail-mime
+poppler-utils exiv2 libnet-dns-perl libmailtools-perl php-mail-mime postfix-mysql \
+dovecot-mysql dovecot-sieve dovecot-managesieved dovecot-imapd dovecot-pop3d \
+dovecot-sieve dovecot-antispam dovecot-fts-xapian postfix-pcre postfwd  opendkim \
+opendkim-tools xapian-tools recoll libdatetime-format-mail-perl fetchmail imapproxy \
+spamassassin libgssapi-perl razor pyzor libencode-detect-perl libgeoip2-perl \
+libnet-patricia-perl libbsd-resource-perl libencoding-fixlatin-perl \
+libencoding-fixlatin-xs-perl liburi-encode-perl
+
 
 systemctl restart chrony
-systemctl restart rsyslog
+echo > /var/log/mail.log
+/bin/rm -rf /var/log/mail.info
+/bin/rm -rf /var/log/mail.warn
+/bin/rm -rf /var/log/mail.err
 
 a2enmod actions > /dev/null 2>&1
 a2enmod proxy_fcgi > /dev/null 2>&1
@@ -212,8 +222,8 @@ systemctl restart  apache2
 systemctl restart  cron
 systemctl restart  mariadb
 
-
-
+touch /var/log/dovecot.log
+chmod 666 /var/log/dovecot.log
 
 echo `hostname -f` > /etc/mailname
 ## adding 89 so that migration from qmailtoaster setup is easier.

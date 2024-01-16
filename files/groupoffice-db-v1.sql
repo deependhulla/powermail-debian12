@@ -1128,7 +1128,7 @@ CREATE TABLE `core_acl` (
   KEY `ownedBy` (`ownedBy`),
   CONSTRAINT `core_acl_ibfk_1` FOREIGN KEY (`entityTypeId`) REFERENCES `core_entity` (`id`) ON DELETE CASCADE,
   CONSTRAINT `core_acl_ibfk_2` FOREIGN KEY (`ownedBy`) REFERENCES `core_user` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1165,8 +1165,7 @@ INSERT INTO `core_acl` VALUES
 (25,1,'core_entity.defaultAclId','2024-01-15 12:45:59',31,NULL),
 (26,1,'core_entity.defaultAclId','2024-01-15 12:45:59',34,NULL),
 (27,1,'core_entity.defaultAclId','2024-01-15 12:45:59',36,NULL),
-(28,1,'cal_calendars.acl_id','2024-01-15 12:45:59',41,1),
-(29,1,'fb_acl','2024-01-16 10:10:20',NULL,NULL);
+(28,1,'cal_calendars.acl_id','2024-01-15 12:45:59',41,1);
 /*!40000 ALTER TABLE `core_acl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1235,7 +1234,7 @@ CREATE TABLE `core_acl_group_changes` (
   KEY `group` (`groupId`),
   CONSTRAINT `all` FOREIGN KEY (`aclId`) REFERENCES `core_acl` (`id`) ON DELETE CASCADE,
   CONSTRAINT `group` FOREIGN KEY (`groupId`) REFERENCES `core_group` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=425 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=394 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1245,24 +1244,24 @@ CREATE TABLE `core_acl_group_changes` (
 LOCK TABLES `core_acl_group_changes` WRITE;
 /*!40000 ALTER TABLE `core_acl_group_changes` DISABLE KEYS */;
 INSERT INTO `core_acl_group_changes` VALUES
-(394,1,1,0,NULL),
-(395,2,2,0,NULL),
-(396,3,3,0,NULL),
-(397,4,4,0,NULL),
-(398,5,2,0,NULL),
-(399,7,2,0,NULL),
-(400,8,3,0,NULL),
-(401,11,3,0,NULL),
-(402,14,3,0,NULL),
-(403,16,3,0,NULL),
-(404,17,2,0,NULL),
-(405,21,3,0,NULL),
-(406,6,2,0,NULL),
-(407,13,3,0,NULL),
-(408,28,3,0,NULL),
-(409,10,3,0,NULL),
-(410,12,3,0,NULL),
-(411,19,3,0,NULL);
+(363,1,1,0,NULL),
+(364,2,2,0,NULL),
+(365,3,3,0,NULL),
+(366,4,4,0,NULL),
+(367,5,2,0,NULL),
+(368,7,2,0,NULL),
+(369,8,3,0,NULL),
+(370,11,3,0,NULL),
+(371,14,3,0,NULL),
+(372,16,3,0,NULL),
+(373,17,2,0,NULL),
+(374,21,3,0,NULL),
+(375,6,2,0,NULL),
+(376,13,3,0,NULL),
+(377,28,3,0,NULL),
+(378,10,3,0,NULL),
+(379,12,3,0,NULL),
+(380,19,3,0,NULL);
 /*!40000 ALTER TABLE `core_acl_group_changes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1380,7 +1379,7 @@ CREATE TABLE `core_auth_password` (
 LOCK TABLES `core_auth_password` WRITE;
 /*!40000 ALTER TABLE `core_auth_password` DISABLE KEYS */;
 INSERT INTO `core_auth_password` VALUES
-(1,'$2y$10$wflwh3gvhiTSAeb8WSZ2/e0fV.NV11kq5RnvZOT2hak2/xeH8xOzS');
+(1,'$2y$10$B2wgkqnA22CdBni1xWyAs.4F8thmHRG2VJK7MI.NeblIf6ju5dH/y');
 /*!40000 ALTER TABLE `core_auth_password` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1503,7 +1502,7 @@ CREATE TABLE `core_change` (
   KEY `core_change_modSeq_entityTypeId_entityId_index` (`modSeq`,`entityTypeId`,`entityId`),
   CONSTRAINT `core_change_ibfk_1` FOREIGN KEY (`entityTypeId`) REFERENCES `core_entity` (`id`) ON DELETE CASCADE,
   CONSTRAINT `core_change_ibfk_2` FOREIGN KEY (`aclId`) REFERENCES `core_acl` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1513,15 +1512,15 @@ CREATE TABLE `core_change` (
 LOCK TABLES `core_change` WRITE;
 /*!40000 ALTER TABLE `core_change` DISABLE KEYS */;
 INSERT INTO `core_change` VALUES
-(39,'1',6,1,NULL,'2024-01-16 11:07:01',0),
-(40,'19',34,1,NULL,'2024-01-16 10:10:07',0),
-(41,'20',34,2,4,'2024-01-16 10:10:20',0),
-(42,'21',34,2,4,'2024-01-16 10:10:20',0),
-(43,'1',24,1,4,'2024-01-16 10:10:20',0),
-(44,'22',34,3,NULL,'2024-01-16 10:11:08',0),
-(45,'4',46,1,NULL,'2024-01-16 10:11:08',0),
-(46,'8',14,1,NULL,'2024-01-16 10:11:12',0),
-(47,'23',34,4,4,'2024-01-16 10:11:15',0);
+(30,'8',14,1,NULL,'2024-01-15 12:51:07',0),
+(31,'1',14,2,NULL,'2024-01-15 12:51:07',0),
+(32,'15',34,1,17,'2024-01-15 12:51:08',0),
+(33,'16',34,1,17,'2024-01-15 12:51:08',0),
+(34,'17',34,2,NULL,'2024-01-15 12:52:36',0),
+(35,'4',46,1,NULL,'2024-01-15 12:52:36',0),
+(36,'8',14,3,NULL,'2024-01-15 12:52:42',0),
+(37,'1',14,4,NULL,'2024-01-15 12:52:42',0),
+(38,'18',34,3,4,'2024-01-15 12:52:46',0);
 /*!40000 ALTER TABLE `core_change` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1614,7 +1613,7 @@ CREATE TABLE `core_client` (
 LOCK TABLES `core_client` WRITE;
 /*!40000 ALTER TABLE `core_client` DISABLE KEYS */;
 INSERT INTO `core_client` VALUES
-(1,'-','Macintosh','Chrome','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36','192.168.190.3','2024-01-16 10:10:20','2024-01-15 12:45:58','allowed',0,1);
+(1,'-','Macintosh','Chrome','Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36','192.168.190.3','2024-01-15 12:45:58','2024-01-15 12:45:58','allowed',0,1);
 /*!40000 ALTER TABLE `core_client` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1650,7 +1649,7 @@ CREATE TABLE `core_cron_job` (
 LOCK TABLES `core_cron_job` WRITE;
 /*!40000 ALTER TABLE `core_cron_job` DISABLE KEYS */;
 INSERT INTO `core_cron_job` VALUES
-(1,1,'Garbage collection','GarbageCollection','0 0 * * *',1,'2024-01-17 00:01:00','2024-01-16 11:07:01',NULL,NULL);
+(1,1,'Garbage collection','GarbageCollection','0 0 * * *',1,'2024-01-16 00:00:00',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `core_cron_job` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1876,7 +1875,7 @@ INSERT INTO `core_entity` VALUES
 (3,1,'Acl','Acl',0,NULL),
 (4,1,'Alert','Alert',0,NULL),
 (5,1,'AuthAllowGroup','AuthAllowGroup',0,NULL),
-(6,1,'CronJobSchedule','CronJobSchedule',1,NULL),
+(6,1,'CronJobSchedule','CronJobSchedule',0,NULL),
 (7,1,'EmailTemplate','EmailTemplate',0,NULL),
 (8,1,'EntityFilter','EntityFilter',0,5),
 (9,1,'Field','Field',0,NULL),
@@ -1884,7 +1883,7 @@ INSERT INTO `core_entity` VALUES
 (11,1,'Group','Group',0,7),
 (12,1,'ImportMapping','ImportMapping',0,NULL),
 (13,1,'Link','Link',0,NULL),
-(14,1,'Module','Module',1,NULL),
+(14,1,'Module','Module',4,NULL),
 (15,1,'OauthAccessToken','OauthAccessToken',0,NULL),
 (16,1,'OauthAuthCode','OauthAuthCode',0,NULL),
 (17,1,'OauthClient','OauthClient',0,NULL),
@@ -1894,7 +1893,7 @@ INSERT INTO `core_entity` VALUES
 (21,1,'SmtpAccount','SmtpAccount',0,24),
 (22,1,'SpreadSheetExport','SpreadSheetExport',0,NULL),
 (23,1,'Token','Token',0,NULL),
-(24,1,'User','User',1,NULL),
+(24,1,'User','User',0,NULL),
 (25,1,'UserDisplay','UserDisplay',0,NULL),
 (26,1,'Template','Template',0,9),
 (27,2,'AddressBook','AddressBook',0,20),
@@ -1904,7 +1903,7 @@ INSERT INTO `core_entity` VALUES
 (31,3,'Category','BookmarksCategory',0,25),
 (32,5,'Comment','Comment',0,NULL),
 (33,5,'Label','CommentLabel',0,NULL),
-(34,6,'LogEntry','LogEntry',4,26),
+(34,6,'LogEntry','LogEntry',3,26),
 (35,7,'Note','Note',0,NULL),
 (36,7,'NoteBook','NoteBook',0,27),
 (37,9,'Category','TaskCategory',0,NULL),
@@ -2463,9 +2462,9 @@ CREATE TABLE `core_setting` (
 LOCK TABLES `core_setting` WRITE;
 /*!40000 ALTER TABLE `core_setting` DISABLE KEYS */;
 INSERT INTO `core_setting` VALUES
-(1,'cacheClearedAt','1705399574'),
+(1,'cacheClearedAt','1705323009'),
 (1,'corsAllowOrigin',''),
-(1,'databaseVersion','6.8.29'),
+(1,'databaseVersion','6.8.28'),
 (1,'defaultAuthenticationDomain','mydomainname.com'),
 (1,'demoDataAsked','1'),
 (1,'language','en'),
@@ -2616,7 +2615,7 @@ CREATE TABLE `core_user` (
 LOCK TABLES `core_user` WRITE;
 /*!40000 ALTER TABLE `core_user` DISABLE KEYS */;
 INSERT INTO `core_user` VALUES
-(1,'groupofficeadmin','System Administrator',NULL,1,'groupofficeadmin@mydomainname.com','groupofficeadmin@mydomainname.com',NULL,NULL,'2024-01-16 10:10:20','2024-01-15 12:45:43','2024-01-16 10:10:20','d-m-Y',1,'G:i','.',',','€',2,20,'Europe/Amsterdam','summary','en','Paper','light',1,'first_name',0,0,0,0,1,0,';','\"',0,NULL,0,0,NULL,0,0,0,0,'users/groupofficeadmin',0);
+(1,'groupofficeadmin','System Administrator',NULL,1,'groupofficeadmin@mydomainname.com','groupofficeadmin@mydomainname.com',NULL,NULL,'2024-01-15 12:45:58','2024-01-15 12:45:43','2024-01-15 12:45:58','d-m-Y',1,'G:i','.',',','€',1,20,'Europe/Amsterdam','summary','en','Paper','light',1,'first_name',0,0,0,0,1,0,';','\"',0,NULL,0,0,NULL,0,0,0,0,'users/groupofficeadmin',0);
 /*!40000 ALTER TABLE `core_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3266,8 +3265,6 @@ CREATE TABLE `fb_acl` (
 
 LOCK TABLES `fb_acl` WRITE;
 /*!40000 ALTER TABLE `fb_acl` DISABLE KEYS */;
-INSERT INTO `fb_acl` VALUES
-(1,29);
 /*!40000 ALTER TABLE `fb_acl` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3908,9 +3905,9 @@ CREATE TABLE `go_cron` (
 LOCK TABLES `go_cron` WRITE;
 /*!40000 ALTER TABLE `go_cron` DISABLE KEYS */;
 INSERT INTO `go_cron` VALUES
-(1,'Calendar publisher',1,'0','*','*','*','*','*','GO\\Calendar\\Cron\\CalendarPublisher',0,1705402800,1705399621,1705399621,NULL,0,'[]'),
-(2,'Email Reminders',1,'*/5','*','*','*','*','*','GO\\Base\\Cron\\EmailReminders',0,1705400100,1705399801,1705399801,NULL,0,'[]'),
-(3,'Calculate disk usage',1,'1','1','*','*','*','*','GO\\Base\\Cron\\CalculateDiskUsage',0,1705453260,0,0,NULL,0,'[]');
+(1,'Calendar publisher',1,'0','*','*','*','*','*','GO\\Calendar\\Cron\\CalendarPublisher',0,1705323600,0,0,NULL,0,'[]'),
+(2,'Email Reminders',1,'*/5','*','*','*','*','*','GO\\Base\\Cron\\EmailReminders',0,1705323300,1705323001,1705323001,NULL,0,'[]'),
+(3,'Calculate disk usage',1,'1','1','*','*','*','*','GO\\Base\\Cron\\CalculateDiskUsage',0,1705366860,0,0,NULL,0,'[]');
 /*!40000 ALTER TABLE `go_cron` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4267,7 +4264,7 @@ CREATE TABLE `go_settings` (
 LOCK TABLES `go_settings` WRITE;
 /*!40000 ALTER TABLE `go_settings` DISABLE KEYS */;
 INSERT INTO `go_settings` VALUES
-(0,'cron_last_run','1705399861'),
+(0,'cron_last_run','1705323181'),
 (1,'email_always_request_notification','0'),
 (1,'email_always_respond_to_notifications','0'),
 (1,'email_font_size','14px'),
@@ -4420,7 +4417,7 @@ CREATE TABLE `history_log_entry` (
   KEY `history_log_entry_createdAt_index` (`createdAt`),
   KEY `history_log_entry_removeAcl_action_index` (`removeAcl`,`action`),
   CONSTRAINT `fk_log_entry_core_acl1` FOREIGN KEY (`aclId`) REFERENCES `core_acl` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4447,12 +4444,7 @@ INSERT INTO `history_log_entry` VALUES
 (15,1,'public','{\"user_id\":1,\"parent_id\":0,\"name\":\"public\",\"visible\":0,\"acl_id\":17,\"thumbs\":1,\"ctime\":1705323068,\"mtime\":1705323068,\"muser_id\":1,\"quota_user_id\":1,\"readonly\":1,\"apply_state\":0,\"id\":6}','2024-01-15 12:51:08',1,17,0,44,'6','192.168.190.3','modulescripts.php'),
 (16,1,'customcss','{\"user_id\":1,\"parent_id\":6,\"name\":\"customcss\",\"visible\":0,\"acl_id\":0,\"thumbs\":1,\"ctime\":1705323068,\"mtime\":1705323068,\"muser_id\":1,\"quota_user_id\":1,\"readonly\":0,\"apply_state\":0,\"id\":7}','2024-01-15 12:51:08',1,17,0,44,'7','192.168.190.3','modulescripts.php'),
 (17,1,'go\\modules\\community\\imapauthenticator\\model\\Server','{\"id\":4,\"imapHostname\":\"127.0.0.1\",\"smtpHostname\":\"127.0.0.1\",\"smtpUseUserCredentials\":true,\"smtpEncryption\":\"tls\",\"domains\":[{\"id\":4,\"serverId\":4,\"name\":\"mydomainname.com\"}],\"groups\":[{\"groupId\":3,\"serverId\":4}]}','2024-01-15 12:52:36',1,NULL,0,46,'4','192.168.190.3','JMAP ImapAuthServer/set'),
-(18,5,'groupofficeadmin [192.168.190.3]',NULL,'2024-01-15 12:52:46',1,4,0,24,'1','192.168.190.3','auth.php'),
-(19,6,'groupofficeadmin [192.168.190.3]',NULL,'2024-01-16 10:10:07',1,NULL,0,24,NULL,'192.168.190.3','auth.php'),
-(20,2,'System Administrator','{\"lastLogin\":[\"2024-01-16T10:10:20+00:00\",\"2024-01-15T12:45:58+00:00\"],\"loginCount\":[2,1],\"freebusySettings\":[{\"user_id\":1,\"acl_id\":29},{\"user_id\":1,\"acl_id\":29}]}','2024-01-16 10:10:20',1,4,0,24,'1','192.168.190.3','auth.php'),
-(21,4,'groupofficeadmin [192.168.190.3]',NULL,'2024-01-16 10:10:20',1,4,0,24,'1','192.168.190.3','auth.php'),
-(22,2,'go\\modules\\community\\imapauthenticator\\model\\Server','{\"imapValidateCertificate\":[false,true],\"smtpValidateCertificate\":[false,true],\"domains\":[[{\"id\":4,\"serverId\":4,\"name\":\"mydomainname.com\"},{\"id\":5,\"serverId\":4,\"name\":\"powermail.mydomainname.com\"}],[{\"id\":4,\"serverId\":4,\"name\":\"mydomainname.com\"}]]}','2024-01-16 10:11:08',1,NULL,0,46,'4','192.168.190.3','JMAP ImapAuthServer/set'),
-(23,5,'groupofficeadmin [192.168.190.3]',NULL,'2024-01-16 10:11:15',1,4,0,24,'1','192.168.190.3','auth.php');
+(18,5,'groupofficeadmin [192.168.190.3]',NULL,'2024-01-15 12:52:46',1,4,0,24,'1','192.168.190.3','auth.php');
 /*!40000 ALTER TABLE `history_log_entry` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4488,7 +4480,7 @@ CREATE TABLE `imapauth_server` (
 LOCK TABLES `imapauth_server` WRITE;
 /*!40000 ALTER TABLE `imapauth_server` DISABLE KEYS */;
 INSERT INTO `imapauth_server` VALUES
-(4,'127.0.0.1',143,NULL,0,0,'127.0.0.1',587,NULL,NULL,1,'tls',0);
+(4,'127.0.0.1',143,NULL,1,0,'127.0.0.1',587,NULL,NULL,1,'tls',1);
 /*!40000 ALTER TABLE `imapauth_server` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4506,7 +4498,7 @@ CREATE TABLE `imapauth_server_domain` (
   PRIMARY KEY (`id`),
   KEY `serverId` (`serverId`),
   CONSTRAINT `imapauth_server_domain_ibfk_1` FOREIGN KEY (`serverId`) REFERENCES `imapauth_server` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4516,8 +4508,7 @@ CREATE TABLE `imapauth_server_domain` (
 LOCK TABLES `imapauth_server_domain` WRITE;
 /*!40000 ALTER TABLE `imapauth_server_domain` DISABLE KEYS */;
 INSERT INTO `imapauth_server_domain` VALUES
-(4,4,'mydomainname.com'),
-(5,4,'powermail.mydomainname.com');
+(4,4,'mydomainname.com');
 /*!40000 ALTER TABLE `imapauth_server_domain` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -5621,4 +5612,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-01-16 15:41:41
+-- Dump completed on 2024-01-15 18:23:05

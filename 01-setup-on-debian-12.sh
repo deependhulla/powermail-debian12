@@ -19,6 +19,7 @@ python3-pylint-common pylint iptables-persistent build-essential gnupg2 zip rar 
 python3-pip libimage-exiftool-perl poppler-utils tnef whois libauthen-pam-perl php-zip \
 libio-pty-perl libnet-ssleay-perl lynx lynx-common perl-openssl-defaults mariadb-server \
 libapache2-mod-php php-mysql php-cli php-common php-imap php-ldap php-xml tar \
+dovecot-dev git libxapian-dev libicu-dev libsqlite3-dev autoconf automake libtool pkg-config \
 php-curl php-mbstring php-zip php-apcu php-gd php-imagick imagemagick mcrypt \
 python3-venv memcached php-memcached php-bcmath dbconfig-common libapache2-mod-php php-intl \
 php-mysql php-intl libdbd-mysql-perl certbot python3-certbot-apache automysqlbackup \

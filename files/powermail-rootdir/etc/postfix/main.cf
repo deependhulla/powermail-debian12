@@ -35,7 +35,7 @@ readme_directory = no
 
 # See http://www.postfix.org/COMPATIBILITY_README.html -- default to 2 on
 # fresh installs.
-compatibility_level = 2
+compatibility_level = 3.6
 
 
 alias_maps = hash:/etc/aliases

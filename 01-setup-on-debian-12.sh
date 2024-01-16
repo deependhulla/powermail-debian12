@@ -14,27 +14,27 @@ DEBIAN_FRONTEND=noninteractive
 apt -y -qq install vim chrony openssh-server screen net-tools git mc postfix sendemail  \
 sudo wget curl ethtool iptraf-ng traceroute telnet rsyslog software-properties-common \
 dirmngr parted gdisk apt-transport-https lsb-release ca-certificates iputils-ping \
-debconf-utils pwgen xfsprogs iftop htop multitail net-tools elinks pssh apache2 \
-iptables-persistent build-essential gnupg2 zip rar unrar ftp php rsync unzip \
-libimage-exiftool-perl poppler-utils tnef whois libauthen-pam-perl php-zip \
+python3-full debconf-utils pwgen xfsprogs iftop htop multitail net-tools elinks pssh apache2 \
+python3-pylint-common iptables-persistent build-essential gnupg2 zip rar unrar ftp php rsync unzip \
+python3-pip libimage-exiftool-perl poppler-utils tnef whois libauthen-pam-perl php-zip \
 libio-pty-perl libnet-ssleay-perl lynx lynx-common perl-openssl-defaults mariadb-server \
 libapache2-mod-php php-mysql php-cli php-common php-imap php-ldap php-xml tar \
 php-curl php-mbstring php-zip php-apcu php-gd php-imagick imagemagick mcrypt \
-memcached php-memcached php-bcmath dbconfig-common libapache2-mod-php php-intl \
+python3-venv memcached php-memcached php-bcmath dbconfig-common libapache2-mod-php php-intl \
 php-mysql php-intl libdbd-mysql-perl certbot python3-certbot-apache automysqlbackup \
 php-mailparse perl-doc mysqltuner catdoc imagemagick tesseract-ocr tesseract-ocr-eng \
 poppler-utils exiv2 libnet-dns-perl libmailtools-perl php-mail-mime postfix-mysql \
-dovecot-mysql dovecot-sieve dovecot-managesieved dovecot-imapd dovecot-pop3d \
+isort dovecot-mysql dovecot-sieve dovecot-managesieved dovecot-imapd dovecot-pop3d \
 dovecot-sieve dovecot-antispam dovecot-fts-xapian postfix-pcre postfwd  opendkim \
 opendkim-tools xapian-tools recoll libdatetime-format-mail-perl fetchmail imapproxy \
 spamassassin libgssapi-perl razor pyzor libencode-detect-perl libgeoip2-perl \
 libnet-patricia-perl antiword libbsd-resource-perl libencoding-fixlatin-perl \
 libconfig-yaml-perl libnet-ldap-perl libconvert-asn1-perl libbusiness-isbn-perl \
-libencoding-fixlatin-xs-perl liburi-encode-perl \
+python3-pycodestyle pycodestyle libencoding-fixlatin-xs-perl liburi-encode-perl \
 libtest-leaktrace-perl libdb5.3-dev nomarch libtest-leaktrace-perl \
 libsort-naturally-perl libfile-which-perl  libfile-homedir-perl \
 libfile-homedir-perl libfile-which-perl libpath-class-perl libany-uri-escape-perl \
-libcpan-changes-perl libcpan-distnameinfo-perl \
+python3-pytest libcpan-changes-perl libcpan-distnameinfo-perl \
 libcpan-meta-check-perl libdata-perl-perl libdata-section-perl \
 libexporter-tiny-perl libfile-pushd-perl libfile-slurp-perl \
 libgetopt-long-descriptive-perl liblist-moreutils-perl libmaxminddb-dev \

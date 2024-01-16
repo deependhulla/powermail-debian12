@@ -7,9 +7,15 @@ chown -R www-data:www-data /home/groupoffice/
 echo "Downloading Latest GroupOffice "
 ##echo "deb http://repo.group-office.com/ 64-php-71 main" > /etc/apt/sources.list.d/groupoffice.list
 echo "deb http://repo.group-office.com/ sixeight main" > /etc/apt/sources.list.d/groupoffice.list
-apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0758838B
+#apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0758838B
 ## in case to use port 80
-apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0758838B
+#apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0758838B
+wget -qO - https://repo.group-office.com/downloads/groupoffice.gpg | gpg --dearmor -o /etc/apt/trusted.gpg.d/groupoffice.gpg
+
+#for purchased Group-Office Professional licenses then make sure the SourceGuardian loader is installed. You can run this command to do all the work:
+curl -s https://raw.githubusercontent.com/Intermesh/groupoffice/master/scripts/sg_install.sh | bash
+
+
 apt-get update
 systemctl stop cron
 

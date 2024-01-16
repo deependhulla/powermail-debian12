@@ -2,7 +2,7 @@
 
 
 apt update
-apt -y upgrade
+apt -y -qq upgrade
 
 CFG_HOSTNAME_FQDN=`hostname -f`
 echo "postfix postfix/main_mailer_type select Internet Site" | debconf-set-selections
@@ -11,7 +11,7 @@ echo "iptables-persistent iptables-persistent/autosave_v4 boolean true" | debcon
 echo "iptables-persistent iptables-persistent/autosave_v6 boolean true" | debconf-set-selections
 DEBIAN_FRONTEND=noninteractive
 
-apt -y install vim chrony openssh-server screen net-tools git mc postfix sendemail  \
+apt -y -qq install vim chrony openssh-server screen net-tools git mc postfix sendemail  \
 sudo wget curl ethtool iptraf-ng traceroute telnet rsyslog software-properties-common \
 dirmngr parted gdisk apt-transport-https lsb-release ca-certificates iputils-ping \
 debconf-utils pwgen xfsprogs iftop htop multitail net-tools elinks pssh apache2 \
@@ -69,7 +69,7 @@ a2enmod headers > /dev/null 2>&1
 a2enmod proxy_http > /dev/null 2>&1
 systemctl stop apache2
 ## usefull for nginx imap & smtp proxy  --also with php-fpm
-apt-get -y install nginx-full php-fpm php-pear
+apt -y -qq install nginx-full php-fpm php-pear
 systemctl stop php8.2-fpm.service > /dev/null 2>&1
 systemctl disable php8.2-fpm.service > /dev/null 2>&1
 ## keep fpm disabled default -- useful for very high load web-server
@@ -125,14 +125,14 @@ systemctl daemon-reload
 #/bin/rm -rf /etc/localtime
 #/bin/ln -vs /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 #### for adding firmware realtek driver
-#apt-get install firmware-linux-nonfree
-#apt-get install firmware-realtek
+#apt install firmware-linux-nonfree
+#apt install firmware-realtek
 #update-initramfs -u
 ## only if VM notfor LXC
 ## for proxmox/kvm better preformance
-#apt-get -y install qemu-guest-agent
+#apt -y install qemu-guest-agent
 ## if on Consle need Mouse to use for copy paste use gpm
-#apt-get install gpm
+#apt install gpm
 #google dns: [2001:4860:4860::8888]
 #cloudflare dns: [2606:4700:4700::1111]
 
@@ -142,7 +142,7 @@ systemctl daemon-reload
 ## safe backup
 files/extra-files/etc-config-backup.sh
 
-apt-get -y install unbound 1>/dev/null 2>/dev/null
+apt -y install unbound 1>/dev/null 2>/dev/null
 ## copy fw default settings
 
 /bin/cp -pR files/rootdir/* /

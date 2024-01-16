@@ -7,7 +7,7 @@
 echo "deb https://download.webmin.com/download/newkey/repository stable contrib" > /etc/apt/sources.list.d/webmin.list 
 wget -c https://download.webmin.com/developers-key.asc -O /etc/apt/trusted.gpg.d/developers-key.asc
 apt-get update
-apt-get -y install webmin
+apt-get -y -qq install webmin
 
 
 

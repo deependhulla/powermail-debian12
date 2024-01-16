@@ -1,12 +1,13 @@
 #!/bin/sh
 
 
-wget https://github.com/MailScanner/v5/releases/download/5.4.5-3/MailScanner-5.4.5-3.noarch.deb -O /opt/MailScanner-5.4.5-3.noarch.deb
-wget -c https://github.com/MailScanner/v5/releases/download/5.4.5-3/MailScanner-5.4.5-3.noarch.deb.sig -O /opt/MailScanner-5.4.5-3.noarch.deb.sig
-#sh files/mailscanner-files/extra-perl-modules.sh
+wget https://github.com/MailScanner/v5/releases/download/5.5.1-4/MailScanner-5.5.1-4.noarch.deb.sig -O /tmp/MailScanner-5.5.1-4.noarch.deb.sig
+wget https://github.com/MailScanner/v5/releases/download/5.5.1-4/MailScanner-5.5.1-4.noarch.deb -O /tmp/MailScanner-5.5.1-4.noarch.deb
+dpkg -i /tmp/MailScanner-5.5.1-4.noarch.deb
 
-dpkg -i /opt/MailScanner-5.4.5-3.noarch.deb
-/usr/sbin/ms-configure --MTA=postfix --installClamav=N --installCPAN=Y --ignoreDeps=N --ramdiskSize=0
+/usr/sbin/ms-configure --MTA=postfix --installClamav=Y --installCPAN=Y --ramdiskSize=0 --installUnrar=Y
+
+
 ##backup Message.pm as we are updating with Opentrack URL-Images
 /bin/cp /usr/share/MailScanner/perl/MailScanner/Message.pm /usr/local/src/MailScanner-Orginal-Message-`date +%s`.pm 
 
@@ -19,7 +20,7 @@ dpkg -i /opt/MailScanner-5.4.5-3.noarch.deb
 ##  /var/spool/MailScanner/incoming/** rw,
 ## Then, reload AppArmor /etc/init.d/apparmor reload
 ## Else Error : clam  : lstat() failed on: /var/spool/MailScanner/incoming/
-/bin/cp -pRv files/mailscanner-files/usr.sbin.clamd /etc/apparmor.d/
+#/bin/cp -pRv files/mailscanner-files/usr.sbin.clamd /etc/apparmor.d/
 systemctl restart apparmor.service 2>/dev/null 
 
 sed -i "s/run_mailscanner=0/run_mailscanner=1/" /etc/MailScanner/defaults 

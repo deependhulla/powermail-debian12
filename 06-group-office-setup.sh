@@ -6,7 +6,7 @@ chown -R www-data:www-data /home/groupoffice/
 
 echo "Downloading Latest GroupOffice "
 ##echo "deb http://repo.group-office.com/ 64-php-71 main" > /etc/apt/sources.list.d/groupoffice.list
-echo "deb http://repo.group-office.com/ sixsix main" > /etc/apt/sources.list.d/groupoffice.list
+echo "deb http://repo.group-office.com/ sixeight main" > /etc/apt/sources.list.d/groupoffice.list
 apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0758838B
 ## in case to use port 80
 apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0758838B

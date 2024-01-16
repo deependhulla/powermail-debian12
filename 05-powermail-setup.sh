@@ -38,7 +38,7 @@ mysqladmin -uroot refresh
 chown -R vmail:vmail /home/powermail
 systemctl restart rsyslog
 # dowload latest for checking ip when attack for country to check
-/usr/local/src/ip-to-location/download-latest-ip-db.sh 2>/dev/null
+/usr/local/src/ip-to-location/download-latest-ip-db.sh 1>/dev/null 2>/dev/null
 
 ## remove different mail log files and reset one used
 echo > /var/log/mail.log

@@ -34,8 +34,8 @@ touch /etc/MailScanner/filename.rules.conf
 mkdir /var/spool/MailScanner/incoming 2>/dev/null
 mkdir /var/spool/MailScanner/quarantine 2>/dev/null
 mkdir /var/spool/MailScanner/incoming/Locks 2>/dev/null
-chown postfix.postfix /var/spool/MailScanner/incoming
-chown postfix.postfix /var/spool/MailScanner/quarantine
+chown postfix:postfix /var/spool/MailScanner/incoming
+chown postfix:postfix /var/spool/MailScanner/quarantine
 chown postfix:root /var/spool/postfix/
 
 ## for Update

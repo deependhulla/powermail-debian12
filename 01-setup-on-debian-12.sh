@@ -42,9 +42,25 @@ liblist-moreutils-xs-perl liblocal-lib-perl libmodule-build-perl \
 libmodule-cpanfile-perl libmodule-signature-perl libmoox-handlesvia-perl \
 libparse-pmfile-perl libpod-markdown-perl libpod-readme-perl \
 libsoftware-license-perl libstring-shellquote-perl libtype-tiny-perl \
-libtype-tiny-xs-perl liburi-escape-xs-perl \
-libclone-pp-perl libtest-requires-perl libtest-warnings-perl libtest-fatal-perl
-
+libgeo-ipfree-perl libtype-tiny-xs-perl liburi-escape-xs-perl \
+libclone-pp-perl libtest-requires-perl libtest-warnings-perl libtest-fatal-perl \
+p7zip p7zip-full arj liblhasa0 lhasa libmspack0 cabextract pax libidn2-dev libdb-dev \
+cpanminus libcompress-raw-zlib-perl libconvert-tnef-perl libfilesys-df-perl libinline-perl \
+libyaml-pp-perl libxxx-perl libpegex-perl libinline-c-perl libinline-files-perl libmail-imapclient-perl \
+libmath-bigint-perl libole-storage-lite-perl libpod-simple-perl libsocket-perl libtest-harness-perl \
+libtest-pod-perl libtest-simple-perl libsys-sigaction-perl libextutils-cbuilder-perl \
+libnet-dns-resolver-programmable-perl libtest-manifest-perl libtext-balanced-perl libversion-perl \
+libsendmail-pmilter-perl libmail-milter-perl libdevel-symdump-perl libpod-parser-perl libpod-coverage-perl \
+libtest-pod-coverage-perl libfile-sharedir-install-perl libhtml-tokeparser-simple-perl geoip-database \
+libgeoip1 libgeo-ip-perl libb-keywords-perl libdevel-cycle-perl libdevel-hide-perl libffi-checklib-perl \
+libfile-chdir-perl libhook-lexwrap-perl libimporter-perl liblingua-en-inflect-perl libtask-weaken-perl \
+libppi-perl libppix-quotelike-perl libppix-regexp-perl libppix-utilities-perl libpod-spell-perl \
+libstring-format-perl perltidy libperl-critic-perl libsub-info-perl libsub-uplevel-perl libterm-size-perl-perl \
+libterm-size-any-perl libterm-table-perl libtest-exception-perl libtest-failwarnings-perl libtest-file-perl \
+libtest-nowarnings-perl libtest-object-perl libtest-regexp-perl libtest-subcalls-perl libtest2-suite-perl \
+libtext-diff-perl libmce-perl libsereal-decoder-perl libsereal-encoder-perl libtest-perl-critic-perl \
+clamav-base libclamav11 clamav-freshclam clamav-daemon bzip2-doc clamav clamdscan libbz2-dev \
+libclamav-client-perl libssl-dev libtommath1 libtommath-dev libclamav-dev libtommath-doc 
 
 systemctl restart chrony
 echo > /var/log/mail.log

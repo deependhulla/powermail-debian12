@@ -1,5 +1,8 @@
 #!/bin/sh
 
+BASEDIR=$(dirname $0)
+cd $BASEDIR
+
 ##https://github.com/grosjo/fts-xapian
 
 cp  14-fts-plugin.conf /etc/dovecot/conf.d/

@@ -53,9 +53,10 @@ php /usr/local/src/groupoffice65-groupofficeadmin-password-reset.php
 
 sudo -u www-data php /usr/share/groupoffice/cli.php core/System/upgrade
 echo "GroupOffice Uptodate done.."
+## please get dovecot FTS setup done too
 echo "\$config['email_allow_body_search'] = true;" >> /etc/groupoffice/config.php
 systemctl start cron
-
+sed -i "s/powermail\.mydomainname\.com/`hostname -f`/" /usr/local/src/cert-renew-and-restart.sh
 
 systemctl restart apache2
 

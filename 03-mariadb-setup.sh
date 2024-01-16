@@ -18,4 +18,4 @@ systemctl restart  mariadb
 #mysqladmin -u root -p extended-status
 #mysqladmin -u root -p processlist
 
-
+echo "Database Password Setup done."

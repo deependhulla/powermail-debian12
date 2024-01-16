@@ -168,5 +168,6 @@ chown -R vmail:vmail /home/powermail
 #DEBIAN_FRONTEND=noninteractive apt -y install zfs-dkms zfsutils-linux zfs-zed
 #apt -y install dpkg-dev linux-headers-$(uname -r) linux-image-amd64
 
+echo "Packages installed."
 
 

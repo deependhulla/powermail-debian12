@@ -57,5 +57,5 @@ systemctl start cron
 
 systemctl restart apache2
 
-echo "Done"
+echo "GroupOffice Setup Done"
 

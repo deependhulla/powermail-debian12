@@ -50,8 +50,10 @@ echo $GOPASSVPOP > /usr/local/src/groupofficeadmin-pass
 
 php /usr/local/src/groupoffice65-groupofficeadmin-password-reset.php
 
+
 sudo -u www-data php /usr/share/groupoffice/cli.php core/System/upgrade
 echo "GroupOffice Uptodate done.."
+echo "\$config['email_allow_body_search'] = true;" >> /etc/groupoffice/config.php
 systemctl start cron
 
 

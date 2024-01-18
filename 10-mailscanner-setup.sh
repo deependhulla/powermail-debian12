@@ -86,8 +86,10 @@ chmod 666 /var/spool/MailScanner/incoming/SpamAssassin.cache.db 2>/dev/null 1>/d
 systemctl enable postfix
 systemctl restart postfix
 systemctl enable mailscanner
-systemctl restart mailscanner
+systemctl stop mailscanner
+systemctl start mailscanner
 systemctl enable msmilter
-systemctl restart msmilter
+systemctl stop msmilter
+systemctl start msmilter
 
 echo "Done."

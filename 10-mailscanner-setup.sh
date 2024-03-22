@@ -1,15 +1,16 @@
 #!/bin/sh
 
 
-wget https://github.com/MailScanner/v5/releases/download/5.5.1-4/MailScanner-5.5.1-4.noarch.deb.sig -O /tmp/MailScanner-5.5.1-4.noarch.deb.sig
-wget https://github.com/MailScanner/v5/releases/download/5.5.1-4/MailScanner-5.5.1-4.noarch.deb -O /tmp/MailScanner-5.5.1-4.noarch.deb
-dpkg -i /tmp/MailScanner-5.5.1-4.noarch.deb
+wget https://github.com/MailScanner/v5/releases/download/5.5.1-4/MailScanner-5.5.1-5.noarch.deb.sig -O /tmp/MailScanner-5.5.1-5.noarch.deb.sig
+wget https://github.com/MailScanner/v5/releases/download/5.5.1-4/MailScanner-5.5.1-5.noarch.deb -O /tmp/MailScanner-5.5.1-5.noarch.deb
+dpkg -i /tmp/MailScanner-5.5.1-5.noarch.deb
 
 /usr/sbin/ms-configure --MTA=postfix --installClamav=Y --installCPAN=Y --ramdiskSize=0 --installUnrar=Y
 
 
-##backup Message.pm as we are updating with Opentrack URL-Images
+##backup Message.pm as we are updating with Opentrack URL-Images and Outlook Vcal fix.
 /bin/cp /usr/share/MailScanner/perl/MailScanner/Message.pm /usr/local/src/MailScanner-Orginal-Message-`date +%s`.pm 
+/bin/cp /usr/share/MailScanner/perl/MailScanner/MSDiskStore.pm /usr/local/src/MailScanner-Orginal-MSDiskStore-`date +%s`.pm
 
 ## allow http://lists.mailscanner.info/pipermail/mailscanner/2012-February/099106.html
 ## 
@@ -21,6 +22,30 @@ dpkg -i /tmp/MailScanner-5.5.1-4.noarch.deb
 ## Then, reload AppArmor /etc/init.d/apparmor reload
 ## Else Error : clam  : lstat() failed on: /var/spool/MailScanner/incoming/
 #/bin/cp -pRv files/mailscanner-files/usr.sbin.clamd /etc/apparmor.d/
+
+
+
+# VCALENDAR outlook fix in mailscanner ..calender not working ok.
+# Added the Code in : 
+# /usr/share/MailScanner/perl/MailScanner/MSDiskStore.pm
+# 
+#  diff MSDiskStore-v5.pm MSDiskStore.pm
+# 299,300d298
+# <       # Newline separation between header and body was missing here for VCALENDAR
+# <       $Tf->print("\n"); 
+#########
+# IT LOOK LIKE THIS:
+# 
+# } elsif ($this->{body}[0] eq "MIME") {
+#      my ($type, $id, $entity, $outq)= @{$this->{body}};
+#      # This needs re-writing, as we need to massage every line
+#      # Newline separation between header and body was missing here for VCALENDAR
+#      $Tf->print("\n");
+#
+#      # Create a pipe to squirt the message body through
+# 
+ #######​
+ 
 systemctl restart apparmor.service 2>/dev/null 
 
 sed -i "s/run_mailscanner=0/run_mailscanner=1/" /etc/MailScanner/defaults 

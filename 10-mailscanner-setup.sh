@@ -1,8 +1,8 @@
 #!/bin/sh
 
 
-wget https://github.com/MailScanner/v5/releases/download/5.5.1-4/MailScanner-5.5.1-5.noarch.deb.sig -O /tmp/MailScanner-5.5.1-5.noarch.deb.sig
-wget https://github.com/MailScanner/v5/releases/download/5.5.1-4/MailScanner-5.5.1-5.noarch.deb -O /tmp/MailScanner-5.5.1-5.noarch.deb
+wget https://github.com/MailScanner/v5/releases/download/5.5.1-5/MailScanner-5.5.1-5.noarch.deb.sig -O /tmp/MailScanner-5.5.1-5.noarch.deb.sig
+wget https://github.com/MailScanner/v5/releases/download/5.5.1-5/MailScanner-5.5.1-5.noarch.deb -O /tmp/MailScanner-5.5.1-5.noarch.deb
 dpkg -i /tmp/MailScanner-5.5.1-5.noarch.deb
 
 /usr/sbin/ms-configure --MTA=postfix --installClamav=Y --installCPAN=Y --ramdiskSize=0 --installUnrar=Y

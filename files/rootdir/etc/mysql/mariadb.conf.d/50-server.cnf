@@ -60,6 +60,8 @@ query_cache_min_res_unit = 2k
 query_cache_size = 80M
 tmp_table_size= 64M
 max_heap_table_size= 64M
+#tmp_table_size= 2G
+#max_heap_table_size= 2G
 
 #slow-query-log = 1
 #slow-query-log-file = /var/lib/mysql/mysql-slow.log

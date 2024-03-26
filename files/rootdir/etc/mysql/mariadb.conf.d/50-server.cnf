@@ -24,11 +24,32 @@ skip-external-locking
 # Broken reverse DNS slows down connections considerably and name resolve is
 # safe to skip if there are no "host by domain name" access grants
 skip-name-resolve
+sql_mode=NO_ENGINE_SUBSTITUTION
+secure-file-priv = ""
 log_warnings = 1
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
 bind-address            = 127.0.0.1
 innodb_file_per_table = 1
+innodb_strict_mode = 0
+#innodb_page_size=64k
+#innodb_log_buffer_size=32M
+#innodb_buffer_pool_size=512M
+innodb_read_io_threads = 64
+innodb_write_io_threads = 16
+innodb_file_per_table = 1
+innodb_log_file_size = 2G
+innodb_file_per_table = 1
+innodb_log_buffer_size  = 1024M
+innodb_max_dirty_pages_pct = 0
+innodb_flush_log_at_trx_commit  = 2
+innodb_thread_concurrency   = 16
+innodb_flush_method = O_DIRECT
+innodb_buffer_pool_size=1G
+#innodb_fast_shutdown = 0
+### removed innodb_file_format='Barracuda';
+##innodb_page_size = 64k
+
 #
 # * Fine Tuning
 #

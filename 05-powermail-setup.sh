@@ -65,6 +65,7 @@ sed -i "s/ohm8ahC2/`cat /usr/local/src/mysql-powermail-pass`/" /etc/dovecot/dove
 sed -i "s/powermail\.mydomainname\.com/`hostname -f`/" /etc/postfix/main.cf
 sed -i "s/ohm8ahC2/`cat /usr/local/src/mysql-powermail-pass`/" /home/powermail/etc/powermail.mysql
 sed -i "s/powermail\.mydomainname\.com/`hostname -f`/" /etc/dovecot/conf.d/10-ssl.conf
+sed -i "s/powermail\.mydomainname\.com/`hostname -f`/" /etc/dovecot/conf.d/15-lda.conf
 sed -i "s/powermail\.mydomainname\.com/`hostname -f`/" /etc/apache2/sites-available/default-ssl.conf
 
 ## use only for heavy load server via Service or use nginx 

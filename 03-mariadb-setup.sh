@@ -1,6 +1,14 @@
 #!/bin/bash
 
 
+systemctl stop  mariadb
+
+## get latest stable Version from direct mariadb
+curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash -s -- --mariadb-server-version="mariadb-10.11"
+apt-get -y install mariadb-server mariadb-client mariadb-backup
+
+systemctl start mariadb
+
 sed -i "s/LimitNOFILE=32768/LimitNOFILE=62768/"   /usr/lib/systemd/system/mariadb.service
 systemctl daemon-reload
 
